@@ -1,1 +1,30 @@
-<!DOCTYPE html><html><body><h2>Поиск</h2><input id='query'><button onclick='search()'>Поиск</button><div id='results'></div><script>function search(){}</script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Роза ДАТАБЕЙС — Поиск</title>
+</head>
+<body>
+  <h2>Поиск в базе</h2>
+  <input type="text" id="query" placeholder="Введите запрос..." />
+  <button onclick="search()">Поиск</button>
+  <div id="results"></div>
+
+  <script>
+    function search() {
+      const query = document.getElementById("query").value;
+      fetch("/api/search?q=" + encodeURIComponent(query))
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("results");
+          container.innerHTML = "";
+          data.results.forEach(item => {
+            const div = document.createElement("div");
+            div.innerHTML = `<b>${item.last_name} ${item.first_name} ${item.middle_name}</b><br>${item.position}<br><i>${item.phone}</i><hr>`;
+            container.appendChild(div);
+          });
+        });
+    }
+  </script>
+</body>
+</html>
