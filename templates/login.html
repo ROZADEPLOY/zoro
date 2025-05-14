@@ -1,1 +1,60 @@
-<!DOCTYPE html><html><body><form method='post'><input type='password' name='password'><button>Войти</button></form></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Роза DATA_ by MAKAROV — Вход</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: #1e2a38;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #f0f0f0;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    button {
+      background: #2d9cdb;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #238ac9;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" class="login-box">
+    <h2>Роза DATA_ by MAKAROV</h2>
+    <input type="password" name="password" placeholder="Введите пароль..." required />
+    <button type="submit">Войти</button>
+  </form>
+</body>
+</html>
