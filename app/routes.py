@@ -8,8 +8,8 @@ def index():
     if request.method == "POST":
         password = request.form.get("password")
         if password == "152212":
-    session["authorized"] = True
-    return redirect(url_for("routes.search"))
+            session["authorized"] = True  # ✅ теперь с отступом
+            return redirect(url_for("routes.search"))
     return render_template("login.html")
 
 @routes.route("/search")
