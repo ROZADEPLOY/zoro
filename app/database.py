@@ -23,7 +23,8 @@ def init_db():
 def save_table_from_html(html):
     soup = BeautifulSoup(html, 'html.parser')
     table = soup.find("table")
-    rows = table.find_all("tr")[1:]
+    rows = table.find_all("tr")[1:]  # Пропускаем заголовок
+
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     count = 0
@@ -31,8 +32,10 @@ def save_table_from_html(html):
         cols = row.find_all("td")
         if len(cols) != 6:
             continue
-        c.execute("INSERT INTO people (last_name, first_name, middle_name, birthdate, phone, position) VALUES (?, ?, ?, ?, ?, ?)",
-                  [col.get_text(strip=True) for col in cols])
+        c.execute("""
+            INSERT INTO people (last_name, first_name, middle_name, birthdate, phone, position)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, [col.get_text(strip=True) for col in cols])
         count += 1
     conn.commit()
     conn.close()
